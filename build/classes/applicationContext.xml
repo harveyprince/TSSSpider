@@ -49,8 +49,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<!-- <bean id="TestAction" class="cn.edu.nju.tss.action.TestAction">
-	</bean> -->
+	<bean id="TSSAction" class="cn.edu.nju.tss.action.TSSAction">
+	</bean>
 	
 	<!-- 定义 Autowired 自动注入 bean -->
 	<bean
