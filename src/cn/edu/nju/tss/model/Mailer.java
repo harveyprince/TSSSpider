@@ -8,25 +8,15 @@ import javax.persistence.Table;
 @Table(name="Mailer")
 public class Mailer {
 	/**
-	 * 序列号
-	 */
-	@Id
-	private long id;
-	/**
 	 * 地址
 	 */
+	@Id
 	private String address;
 	/**
 	 * 姓名
 	 */
 	private String name;
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
+
 	public String getAddress() {
 		return address;
 	}
