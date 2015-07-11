@@ -5,21 +5,23 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
+import cn.edu.nju.tss.model.vo.EMail;
+
 public class SendMail {  
 	public ApplicationContext ctx = null;  
 	public SendMail() {  
 		//获取上下文  
 		ctx = new ClassPathXmlApplicationContext("classpath:/applicationMail.xml");  
 	}
-	public void send() {  
+	public void send(EMail email) {  
 		//获取JavaMailSender bean  
 		JavaMailSender sender = (JavaMailSender) ctx.getBean("mailSender");  
 		SimpleMailMessage mail = new SimpleMailMessage(); //<span style="color: #ff0000;">注意SimpleMailMessage只能用来发送text格式的邮件</span>     
 		try {  
-			mail.setTo("948841233@qq.com");//接受者  
-			mail.setFrom("harveyland@163.com");//发送者,这里还可以另起Email别名，不用和xml里的username一致  
-			mail.setSubject("spring mail test!");//主题  
-			mail.setText("springMail的简单发送测试");//邮件内容  
+			mail.setTo(email.getReceiver());//接受者  
+			mail.setFrom("harveyprince");//发送者,这里还可以另起Email别名，不用和xml里的username一致  
+			mail.setSubject(email.getTitle());//主题  
+			mail.setText(email.getContent());//邮件内容  
 			sender.send(mail);  
 		} catch (Exception e) {  
 			e.printStackTrace();  
