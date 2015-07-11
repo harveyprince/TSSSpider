@@ -76,7 +76,7 @@ public class TSSServiceImpl implements TSSService {
 				courselist.add(temp);
 				baseDao.save(temp);
 			}
-			else if(cdb.getLatestUpdateTime()!=temp.getLatestUpdateTime()){
+			else if(!cdb.getLatestUpdateTime().equals(temp.getLatestUpdateTime())){
 				courselist.add(temp);
 				baseDao.update(temp);
 			}

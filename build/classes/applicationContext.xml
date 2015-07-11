@@ -49,6 +49,31 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean id="quartzJob" class="cn.edu.nju.tss.service.impl.CronServiceImpl"></bean>
+	<bean id="jobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="quartzJob"/>
+		</property>
+		<property name="targetMethod">
+			<value>cronTSSSpider</value>
+		</property>
+	</bean>
+	<bean id="spidertrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobtask"/>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 0/1 * * ?</value>
+		</property>
+	</bean>
+	<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="spidertrigger"/>
+			</list>
+		</property>
+	</bean>
+	
 	<bean id="TSSAction" class="cn.edu.nju.tss.action.TSSAction">
 	</bean>
 	
