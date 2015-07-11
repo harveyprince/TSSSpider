@@ -23,7 +23,11 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public Course getCourseByCode(String code) {
 		// TODO Auto-generated method stub
-		return null;
+		try{
+			return (Course) baseDao.find(Course.class, "code", code);
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }

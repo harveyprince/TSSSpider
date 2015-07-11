@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.edu.nju.tss.dao.BaseDao;
 import cn.edu.nju.tss.dao.CourseDao;
 import cn.edu.nju.tss.model.Course;
 import cn.edu.nju.tss.service.TSSService;
@@ -16,6 +17,8 @@ import cn.edu.nju.tss.tool.HttpRequest;
 public class TSSServiceImpl implements TSSService {
 	@Autowired
 	private CourseDao courseDao;
+	@Autowired
+	private BaseDao baseDao;
 	
 	@Override
 	public List<Course> getCourseListFromNet() {
@@ -66,8 +69,22 @@ public class TSSServiceImpl implements TSSService {
 	@Override
 	public List<Course> compareCourseList(List<Course> info) {
 		// TODO Auto-generated method stub
-		List<Course> courselist = courseDao.getCourseList();
-		return null;
+		List<Course> courselist = new ArrayList<Course>();
+		for(Course temp:info){
+			Course cdb = courseDao.getCourseByCode(temp.getCode());
+			if(cdb==null){
+				courselist.add(temp);
+				baseDao.save(temp);
+			}
+			else if(cdb.getLatestUpdateTime()!=temp.getLatestUpdateTime()){
+				courselist.add(temp);
+				baseDao.update(temp);
+			}
+			else{
+				//nothing to be done
+			}
+		}
+		return courselist;
 	}
 
 }
