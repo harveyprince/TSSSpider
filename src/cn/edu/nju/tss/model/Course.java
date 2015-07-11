@@ -1,9 +1,16 @@
-package cn.edu.nju.tss.model.vo;
+package cn.edu.nju.tss.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Course")
 public class Course {
 	/**
 	 * 课程码
 	 */
+	@Id
 	private String code;
 	/**
 	 * 课程名
