@@ -6,7 +6,7 @@ public class EMail {
 	 */
 	private String title;
 	/**
-	 * 内容
+	 * 内容:换行采用\n
 	 */
 	private String content;
 	/**

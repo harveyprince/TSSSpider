@@ -19,7 +19,7 @@ public class SendMail {
 		SimpleMailMessage mail = new SimpleMailMessage(); //<span style="color: #ff0000;">注意SimpleMailMessage只能用来发送text格式的邮件</span>     
 		try {  
 			mail.setTo(email.getReceiver());//接受者  
-			mail.setFrom("harveyprince");//发送者,这里还可以另起Email别名，不用和xml里的username一致  
+			mail.setFrom("harveyland@163.com");//发送者  
 			mail.setSubject(email.getTitle());//主题  
 			mail.setText(email.getContent());//邮件内容  
 			sender.send(mail);  
