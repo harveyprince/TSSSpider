@@ -42,7 +42,13 @@
 
 	</bean>
 
-
+	<!-- redis -->
+	<bean id="jedisConnFactory" 
+    class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
+    p:use-pool="true"/>
+	<bean id="redisTemplate" 
+    class="org.springframework.data.redis.core.StringRedisTemplate" 
+    p:connection-factory-ref="jedisConnFactory"/>
 	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -63,7 +69,7 @@
 			<ref bean="jobtask"/>
 		</property>
 		<property name="cronExpression">
-			<value>0 0 0/1 * * ?</value>
+			<value>0/5 * * * * ?</value>
 		</property>
 	</bean>
 	<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

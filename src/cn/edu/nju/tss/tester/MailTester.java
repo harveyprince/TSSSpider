@@ -1,4 +1,4 @@
-package cn.edu.nju.tss.tester;
+/*package cn.edu.nju.tss.tester;
 
 import cn.edu.nju.tss.model.vo.EMail;
 import cn.edu.nju.tss.tool.SendMail;
@@ -13,3 +13,4 @@ public class MailTester {
 		sm.send(email);
 	}
 }
+*/

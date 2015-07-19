@@ -19,5 +19,5 @@ public interface AccountService {
 	 * @param email 邮箱
 	 * @return 检测结果
 	 */
-	public ResultMessage emailTest(String email);
+	public ResultMessage emailFind(String email);
 }

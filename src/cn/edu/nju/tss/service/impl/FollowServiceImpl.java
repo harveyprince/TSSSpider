@@ -7,6 +7,7 @@ import cn.edu.nju.tss.service.FollowService;
 @Service
 public class FollowServiceImpl implements FollowService {
 
+	
 	@Override
 	public ResultMessage changeFollowWayTo(int followWay) {
 		// TODO Auto-generated method stub

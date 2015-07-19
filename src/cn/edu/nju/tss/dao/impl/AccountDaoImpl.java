@@ -28,6 +28,8 @@ public class AccountDaoImpl implements AccountDao {
 			List<Account> list = query.list();
 			if(list!=null&&list.size()>0){
 				return list.get(0);
+			}else{
+				return null;
 			}
 		}catch(Exception e){
 			e.printStackTrace();
