@@ -9,12 +9,14 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import cn.edu.nju.tss.conf.RedisDecorate;
 import cn.edu.nju.tss.dao.AccountDao;
 import cn.edu.nju.tss.dao.BaseDao;
 import cn.edu.nju.tss.model.Account;
 import cn.edu.nju.tss.model.vo.ResultMessage;
 import cn.edu.nju.tss.model.vo.SignUpVO;
 import cn.edu.nju.tss.service.AccountService;
+import cn.edu.nju.tss.tool.Shuffle;
 @Service
 public class AccountServiceImpl implements AccountService {
 	@Autowired
@@ -54,8 +56,48 @@ public class AccountServiceImpl implements AccountService {
 			rm.setComment("该邮箱已被占用");
 		}else{
 //			激活码
-			valueOps.append("activate_", vo.getEmail());
-			redisTemplate.expire("key", 30, TimeUnit.MINUTES);
+			String activateCodeSource = Shuffle.shuffle("qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM");
+			String activateCode = activateCodeSource.substring(0, 20);
+//			在redis中采用超时过期的方法保存注册信息
+			try{
+				valueOps.append(RedisDecorate.activateDec(activateCode), vo.getEmail());
+				redisTemplate.expire(RedisDecorate.activateDec(activateCode), 30, TimeUnit.MINUTES);
+				valueOps.append(RedisDecorate.nameDec(vo.getEmail()),vo.getName());
+				redisTemplate.expire(RedisDecorate.nameDec(vo.getEmail()), 30, TimeUnit.MINUTES);
+				valueOps.append(RedisDecorate.passDec(vo.getEmail()),vo.getPassword());
+				redisTemplate.expire(RedisDecorate.passDec(vo.getEmail()), 30, TimeUnit.MINUTES);
+//				返回携带激活码的结果，用于邮件发送激活码
+				rm.setResult(true);
+				rm.setObj(activateCode);
+			}catch(Exception e){
+				e.printStackTrace();
+				rm.setResult(false);
+				rm.setComment("服务器Redis发生异常");
+			}
+			
+		}
+		return rm;
+	}
+
+	@Override
+	public ResultMessage activate(String activateCode) {
+		// TODO Auto-generated method stub
+		ResultMessage rm = new ResultMessage();
+		try{
+			String email = valueOps.get(RedisDecorate.activateDec(activateCode));
+			if(email!=null){
+				String name = valueOps.get(RedisDecorate.nameDec(email));
+				String password = valueOps.get(RedisDecorate.passDec(email));
+//				进行实际的注册
+				
+			}else{
+				rm.setResult(false);
+				rm.setComment("激活码超时或不存在");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			rm.setResult(false);
+			rm.setComment("激活码超时或不存在或服务器Redis异常");
 		}
 		return rm;
 	}
@@ -72,5 +114,6 @@ public class AccountServiceImpl implements AccountService {
 		}
 		return rm;
 	}
+
 
 }

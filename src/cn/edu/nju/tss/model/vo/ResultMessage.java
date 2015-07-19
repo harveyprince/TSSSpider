@@ -4,7 +4,7 @@ public class ResultMessage {
 	/**
 	 * 成功与否
 	 */
-	private boolean result;
+	private boolean result = false;
 	/**
 	 * 标注
 	 */
