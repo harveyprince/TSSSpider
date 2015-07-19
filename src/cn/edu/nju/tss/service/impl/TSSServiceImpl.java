@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.edu.nju.tss.conf.TSSConfig;
 import cn.edu.nju.tss.dao.BaseDao;
 import cn.edu.nju.tss.dao.CourseDao;
 import cn.edu.nju.tss.model.Course;
@@ -25,7 +26,7 @@ public class TSSServiceImpl implements TSSService {
 		// TODO Auto-generated method stub
 		List<Course> courselist = new ArrayList<Course>();
 		String param = "";
-		String s=HttpRequest.sendGet("http://218.94.159.102/tss/en/home/courselist.html", param);
+		String s=HttpRequest.sendGet(TSSConfig.COURSELIST, param);
 		String str = s;
 		String regex = "<tr >(.+?)</tr>";
 		Pattern pattern = Pattern.compile(regex);
