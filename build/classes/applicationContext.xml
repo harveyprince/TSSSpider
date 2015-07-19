@@ -74,6 +74,8 @@
 		</property>
 	</bean>
 	
+	<bean id="AuthenticateAction" class="cn.edu.nju.tss.action.AuthenticateAction">
+	</bean>
 	<bean id="TSSAction" class="cn.edu.nju.tss.action.TSSAction">
 	</bean>
 	
