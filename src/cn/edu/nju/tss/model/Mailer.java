@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity
 @Table(name="Mailer")
 public class Mailer {
@@ -29,6 +31,7 @@ public class Mailer {
 	 * １：白名单
 	 * ２：黑名单
 	 */
+	@ColumnDefault(value = "0")
 	private int followWay;
 	/**
 	 * 所联系的课程

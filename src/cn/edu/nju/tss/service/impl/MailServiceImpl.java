@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import cn.edu.nju.tss.dao.BaseDao;
 import cn.edu.nju.tss.dao.MailDao;
+import cn.edu.nju.tss.model.EMailDB;
 import cn.edu.nju.tss.model.Mailer;
 import cn.edu.nju.tss.model.vo.EMail;
 import cn.edu.nju.tss.service.MailService;
@@ -37,6 +38,12 @@ public class MailServiceImpl implements MailService {
 			email.setReceiver(temp.getAddress());
 			mailTo(email);
 		}
+	}
+
+	@Override
+	public List<EMailDB> getMailListByPage(int page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
