@@ -10,4 +10,8 @@ public interface CourseDao {
 	
 	public Course getCourseByCode(String code);
 
+	public List<Course> getCourseByPage(int page);
+
+	public List<Course> getUnfollowedCourseByPage(String address, int page);
+
 }

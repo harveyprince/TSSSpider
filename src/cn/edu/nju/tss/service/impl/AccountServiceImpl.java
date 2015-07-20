@@ -13,6 +13,7 @@ import cn.edu.nju.tss.conf.RedisDecorate;
 import cn.edu.nju.tss.dao.AccountDao;
 import cn.edu.nju.tss.dao.BaseDao;
 import cn.edu.nju.tss.model.Account;
+import cn.edu.nju.tss.model.Mailer;
 import cn.edu.nju.tss.model.vo.ResultMessage;
 import cn.edu.nju.tss.model.vo.SignUpVO;
 import cn.edu.nju.tss.service.AccountService;
@@ -88,16 +89,29 @@ public class AccountServiceImpl implements AccountService {
 			if(email!=null){
 				String name = valueOps.get(RedisDecorate.nameDec(email));
 				String password = valueOps.get(RedisDecorate.passDec(email));
-//				进行实际的注册
-				
+//				{进行实际的注册
+				Account account = new Account();
+				account.setEmail(email);
+				account.setPassword(password);
+				baseDao.save(account);
+				Mailer mailer = new Mailer();
+				mailer.setAddress(email);
+				mailer.setName(name);
+				baseDao.save(mailer);
+//				}实际注册结束
+				rm.setResult(true);
+//				清除redis key
+				redisTemplate.delete(RedisDecorate.activateDec(activateCode));
+				redisTemplate.delete(RedisDecorate.nameDec(email));
+				redisTemplate.delete(RedisDecorate.passDec(email));
 			}else{
 				rm.setResult(false);
-				rm.setComment("激活码超时或不存在");
+				rm.setComment("激活码超时或已失效或不存在");
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 			rm.setResult(false);
-			rm.setComment("激活码超时或不存在或服务器Redis异常");
+			rm.setComment("激活失败");
 		}
 		return rm;
 	}

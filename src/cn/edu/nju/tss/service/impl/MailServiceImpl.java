@@ -41,9 +41,10 @@ public class MailServiceImpl implements MailService {
 	}
 
 	@Override
-	public List<EMailDB> getMailListByPage(int page) {
+	public List<EMailDB> getMailListByPage(String address, int page) {
 		// TODO Auto-generated method stub
-		return null;
+		List<EMailDB> emailList = mailDao.getMailListByPage(address, page);
+		return emailList;
 	}
 
 }

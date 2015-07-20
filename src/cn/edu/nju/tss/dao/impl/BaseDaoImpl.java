@@ -50,6 +50,7 @@ public class BaseDaoImpl implements BaseDao {
 
 	/** * 获取所有信息 * * @param c * * @return */
 
+	@SuppressWarnings("rawtypes")
 	public List getAllList(Class c) {
 		String hql = "from " + c.getName();
 		Session session = getSession();
@@ -58,7 +59,7 @@ public class BaseDaoImpl implements BaseDao {
 	}
 
 	/** * 获取总数量 * * @param c * @return */
-
+	@SuppressWarnings("rawtypes")
 	public Long getTotalCount(Class c) {
 		Session session = getNewSession();
 		String hql = "select count(*) from " + c.getName();
@@ -120,6 +121,7 @@ public class BaseDaoImpl implements BaseDao {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object find(Class c, String coloum, String value) {
 		Session session = getNewSession();
@@ -151,7 +153,7 @@ public class BaseDaoImpl implements BaseDao {
 			session.close();
 		}
 	}
-
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object findlist(Class c, String coloum, String value) {
 		Session session = getNewSession();
@@ -182,6 +184,7 @@ public class BaseDaoImpl implements BaseDao {
 	/*
 	 * 批量插入.
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void saveList(List list) {
 		try {

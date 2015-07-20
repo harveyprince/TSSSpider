@@ -19,8 +19,9 @@ public interface MailService {
 	public void mailToAll(EMail mail);
 	
 	/**
+	 * @param address 用户识别
 	 * @param page 页数
 	 * @return 获取已发送的邮件列表
 	 */
-	public List<EMailDB> getMailListByPage(int page);
+	public List<EMailDB> getMailListByPage(String address, int page);
 }
