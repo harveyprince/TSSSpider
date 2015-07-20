@@ -17,4 +17,9 @@ public interface MailDao {
 	 * @return 按页返回用户所有的邮件列表
 	 */
 	public List<EMailDB> getMailListByPage(String address, int page);
+	/**
+	 * @param email 用户邮箱
+	 * @return 返回用户
+	 */
+	public Mailer getMailerByEmail(String email);
 }

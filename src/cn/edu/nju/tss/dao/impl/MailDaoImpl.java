@@ -60,4 +60,29 @@ public class MailDaoImpl implements MailDao {
 		}
 		return null;
 	}
+
+	@Override
+	public Mailer getMailerByEmail(String email) {
+		// TODO Auto-generated method stub
+		Session session = baseDao.getNewSession();
+		try{
+			String sql = "select * from Mailer where address='?'";
+			Query query = session.createSQLQuery(sql).addEntity(Mailer.class);
+			query.setString(0, email);
+			@SuppressWarnings("unchecked")
+			List<Mailer> list = query.list();
+			if(list!=null){
+				if(list.size()<=0){
+					return null;
+				}else{
+					return list.get(0);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return null;
+	}
 }
