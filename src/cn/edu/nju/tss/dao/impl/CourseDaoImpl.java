@@ -20,6 +20,23 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public List<Course> getCourseList() {
 		// TODO Auto-generated method stub
+		Session session = baseDao.getNewSession();
+		try{
+			String sql = "select * from Course";
+			Query query = session.createSQLQuery(sql).addEntity(Course.class);
+			@SuppressWarnings("unchecked")
+			List<Course> list = query.list();
+			if(list!=null){
+				if(list.size()<=0){
+					return null;
+				}
+			}
+			return list;
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
 		return null;
 	}
 

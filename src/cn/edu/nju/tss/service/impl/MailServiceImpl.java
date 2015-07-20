@@ -23,9 +23,6 @@ public class MailServiceImpl implements MailService {
 	public void mailTo(EMail mail) {
 		// TODO Auto-generated method stub
 		SendMail sm = new SendMail();
-		System.out.println(mail.getReceiver());
-		System.out.println(mail.getContent());
-		System.out.println(mail.getTitle());
 		sm.send(mail);
 	}
 

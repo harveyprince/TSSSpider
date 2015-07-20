@@ -26,6 +26,11 @@ public class FollowServiceImpl implements FollowService {
 	public ResultMessage changeFollowWayTo(String email, int followWay) {
 		// TODO Auto-generated method stub
 		ResultMessage rm = new ResultMessage();
+		if(followWay<0||followWay>=4){
+			rm.setResult(false);
+			rm.setComment("未定义的关注方式");
+			return rm;
+		}
 		Mailer mailer = mailDao.getMailerByEmail(email);
 		if(mailer.getFollowWay()!=followWay){
 			mailer.setFollowWay(followWay);

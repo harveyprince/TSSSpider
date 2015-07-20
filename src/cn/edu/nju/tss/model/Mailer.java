@@ -30,6 +30,7 @@ public class Mailer {
 	 * ０：全部关注
 	 * １：白名单
 	 * ２：黑名单
+	 *  3 ：不通知
 	 */
 	@ColumnDefault(value = "0")
 	private int followWay;
