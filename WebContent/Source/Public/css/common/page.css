@@ -9,8 +9,17 @@ input{
 	outline: none;
 }
 .harveyprince{
-	background: #322F2F;
+	/*background: #322F2F;*/
 	background: #444 url("../../../Image/default_back.jpeg") repeat;
+	height: 100%;
+}
+.web-logo {
+	position: absolute;
+	width: 688px;
+	height: 241px;
+	top: 30%;
+  	left: 10%;
+	background-image: url(../../../Image/logo.png);
 }
 .harvey-panel {
 	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;
