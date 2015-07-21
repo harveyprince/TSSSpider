@@ -7,7 +7,7 @@ import cn.edu.nju.tss.model.Mailer;
 
 public interface MailDao {
 	/**
-	 * @return 获取所有收件人
+	 * @return 获取所有需要被通知的收件人
 	 */
 	public List<Mailer> getAllMailers();
 

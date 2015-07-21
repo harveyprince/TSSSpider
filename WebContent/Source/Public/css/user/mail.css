@@ -1,0 +1,35 @@
+.content>header>div>i{
+	padding: 0 135px;
+	cursor: pointer;
+}
+.content>header>div>i:hover{
+	color: cadetblue;
+}
+.main-panel {
+	
+	margin-top: -20px;
+	margin: 0 20%;
+	height: 89%;
+	height: -moz-calc(100%-62px);
+  	height: -webkit-calc(100%-62px);
+  	height: calc(100%-62px);
+  	overflow-y: scroll;
+  	background: rgba(255,255,255,0.8);
+  	padding: 0 10%;
+}
+.mail-block {
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+	border-left-color: #1b809e;
+	background: rgb(255,255,255);
+	color: black;
+}
+.mail-block>h4 {
+	color: #1b809e;
+}
+.mail-block>.mail-content {
+	font-size: 16px;
+}

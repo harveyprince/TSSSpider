@@ -22,7 +22,7 @@ public class CourseDaoImpl implements CourseDao {
 		// TODO Auto-generated method stub
 		Session session = baseDao.getNewSession();
 		try{
-			String sql = "select * from Course";
+			String sql = "select * from Course order by time desc";
 			Query query = session.createSQLQuery(sql).addEntity(Course.class);
 			@SuppressWarnings("unchecked")
 			List<Course> list = query.list();
@@ -68,7 +68,7 @@ public class CourseDaoImpl implements CourseDao {
 		// TODO Auto-generated method stub
 		Session session = baseDao.getNewSession();
 		try{
-			String sql = "select * from Course limit ?,?";
+			String sql = "select * from Course order by time desc limit ?,?";
 			Query query = session.createSQLQuery(sql).addEntity(Course.class);
 			query.setInteger(0, page*PageConfig.COURSE_PAGE);
 			query.setInteger(1, PageConfig.COURSE_PAGE);
@@ -93,7 +93,7 @@ public class CourseDaoImpl implements CourseDao {
 		// TODO Auto-generated method stub
 		Session session = baseDao.getNewSession();
 		try{
-			String sql = "select * from Course where code not in (select code from FollowCourse where address='?') limit ?,?";
+			String sql = "select * from Course where code not in (select code from FollowCourse where address='?') order by time desc limit ?,?";
 			Query query = session.createSQLQuery(sql).addEntity(Course.class);
 			query.setString(0, address);
 			query.setInteger(1, page*PageConfig.COURSE_PAGE);

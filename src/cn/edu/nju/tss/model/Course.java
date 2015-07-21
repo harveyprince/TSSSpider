@@ -1,5 +1,7 @@
 package cn.edu.nju.tss.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -24,6 +26,10 @@ public class Course {
 	 * 最后更新时间
 	 */
 	private String latestUpdateTime;
+	/**
+	 * 系统捕获时的更新时间
+	 */
+	private Timestamp time;
 	public String getCode() {
 		return code;
 	}
@@ -47,6 +53,12 @@ public class Course {
 	}
 	public void setLatestUpdateTime(String latestUpdateTime) {
 		this.latestUpdateTime = latestUpdateTime;
+	}
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 	
 }

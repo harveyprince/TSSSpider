@@ -1,9 +1,4 @@
-.content>header{
-	padding: 10px 0;
-	text-align: center;
-	font-size: 30px;	
-	background: rgba(0,0,0,0.6);
-}
+
 .main-panel {
 	height: 87%;
 	background: rgba(255,255,255,0.8);
@@ -11,9 +6,7 @@
 .main-panel div{
 	/*display: inline;*/
 }
-.container {
-	padding: 0 0;
-}
+
 .panel-block {
 	height: 100%;
 	

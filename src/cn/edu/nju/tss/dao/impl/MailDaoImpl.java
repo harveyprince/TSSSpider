@@ -22,7 +22,7 @@ public class MailDaoImpl implements MailDao {
 		// TODO Auto-generated method stub
 		Session session = baseDao.getNewSession();
 		try{
-			String sql = "select * from Mailer";
+			String sql = "select * from Mailer where followWay<3";
 			Query query = session.createSQLQuery(sql).addEntity(Mailer.class);
 			@SuppressWarnings("unchecked")
 			List<Mailer> list = query.list();

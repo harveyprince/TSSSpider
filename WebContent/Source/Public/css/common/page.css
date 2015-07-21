@@ -8,6 +8,15 @@ button{
 input{
 	outline: none;
 }
+.content>header{
+	padding: 10px 0;
+	text-align: center;
+	font-size: 30px;	
+	background: rgba(0,0,0,0.6);
+}
+.container {
+	padding: 0 0;
+}
 .harveyprince{
 	/*background: #322F2F;*/
 	background: #444 url("../../../Image/default_back.jpeg") repeat;
