@@ -9,5 +9,14 @@
           <action name="" class="AuthenticateAction" method="welcome">
           	<result name="success">/Page/welcome/welcome.jsp</result>
           </action>
+          <action name="follow" class="AuthenticateAction" method="welcome">
+          	<result name="success">/Page/user/follow.jsp</result>
+          </action>
+          <action name="mail" class="AuthenticateAction" method="welcome">
+          	<result name="success">/Page/user/mail.jsp</result>
+          </action>
+          <action name="activate" class="AuthenticateAction" method="welcome">
+          	<result name="success">/Page/welcome/activate.jsp</result>
+          </action>
       </package>
   </struts>

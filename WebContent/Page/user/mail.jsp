@@ -14,19 +14,37 @@
 	<link rel="stylesheet" type="text/css" href="./Source/Public/drawer/css/menu_elastic.css" />
 	<link rel="stylesheet" type="text/css" href="./Source/Public/css/common/page.css" />
 	<link rel="stylesheet" type="text/css" href="./Source/Public/css/user/mail.css" />
-	<link rel="stylesheet" type="text/css" href="./Source/Public/css/user/activate.css" />
+	<link rel="stylesheet" type="text/css" href="./Source/Public/hubspot/css/messenger.css" />
+	<link rel="stylesheet" type="text/css" href="./Source/Public/hubspot/css/messenger-theme-air.css" />
 </head>
 <body>
 	<div class="container">
+		<%@include file="../common/drawer.jsp" %>
 		<div class="content-wrap">
 			<div class="content harveyprince">
 				<header>
-					<div>激活提示</div>
+					<div><i class="fa fa-chevron-left"></i>邮件列表查看<i class="fa fa-chevron-right"></i></div>
 				</header>
 				<div class="main-panel">
 					<div class="mail-block">
-						<h4>激活成功</h4>
-						<div class="mail-content">等待<span>5</span>秒后跳转到首页</div>
+						<h4>邮件头</h4>
+						<div class="mail-content">邮件内容</div>
+					</div>
+					<div class="mail-block">
+						<h4>邮件头</h4>
+						<div class="mail-content">邮件内容</div>
+					</div>
+					<div class="mail-block">
+						<h4>邮件头</h4>
+						<div class="mail-content">邮件内容</div>
+					</div>
+					<div class="mail-block">
+						<h4>邮件头</h4>
+						<div class="mail-content">邮件内容</div>
+					</div>
+					<div class="mail-block">
+						<h4>邮件头</h4>
+						<div class="mail-content">邮件内容</div>
 					</div>
 				</div>
 			</div>
@@ -35,4 +53,14 @@
 
 </body>
 <script src="./Source/Public/jquery/jquery.min.js"></script>
+<script src="./Source/Public/backbone-1.2.1/underscore.js"></script>
+<script src="./Source/Public/backbone-1.2.1/backbone-min.js"></script>
+<script src="./Source/Public/hubspot/js/messenger.min.js"></script>
+<script type="text/javascript">
+	Messenger.options = {
+	    extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+	    theme: 'air'
+	}
+	Messenger().post("Your request has succeded!");
+</script>
 </html>
