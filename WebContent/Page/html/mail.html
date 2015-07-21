@@ -11,6 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="../../Source/Public/drawer/css/menu_elastic.css" />
 	<link rel="stylesheet" type="text/css" href="../../Source/Public/css/common/page.css" />
 	<link rel="stylesheet" type="text/css" href="../../Source/Public/css/user/mail.css" />
+	<link rel="stylesheet" type="text/css" href="../../Source/Public/hubspot/css/messenger.css" />
+	<link rel="stylesheet" type="text/css" href="../../Source/Public/hubspot/css/messenger-theme-air.css" />
 </head>
 <body>
 	<div class="container">
@@ -61,7 +63,18 @@
 	</div><!-- /container -->
 
 </body>
+<script src="../../Source/Public/jquery/jquery.min.js"></script>
+<script src="../../Source/Public/backbone-1.2.1/underscore.js"></script>
+<script src="../../Source/Public/backbone-1.2.1/backbone-min.js"></script>
+<script src="../../Source/Public/hubspot/js/messenger.min.js"></script>
 <script src="../../Source/Public/drawer/js/snap.svg-min.js"></script>
 <script src="../../Source/Public/drawer/js/classie.js"></script>
 <script src="../../Source/Public/drawer/js/main3.js"></script>
+<script type="text/javascript">
+	Messenger.options = {
+	    extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+	    theme: 'air'
+	}
+	Messenger().post("Your request has succeded!");
+</script>
 </html>
