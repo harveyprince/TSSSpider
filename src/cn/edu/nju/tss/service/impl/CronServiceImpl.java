@@ -35,21 +35,25 @@ public class CronServiceImpl implements CronService{
 		// TODO Auto-generated method stub
 		List<Course> nowCourselist = courseDao.getCourseList();
 		List<Course> netCourselist = tssService.getCourseListFromNet();
-		List<Course> changedCourselist = tssService.compareCourseList(netCourselist);
-		if(changedCourselist.size()==0){
-			return;
-		}
 //		区分新增与更新
 //		新增
-		List<Course> addedCourselist = new ArrayList<Course>();
-		addedCourselist.addAll(changedCourselist);
-		addedCourselist.removeAll(nowCourselist);
+		List<Course> addedCourselist = tssService.compareAddCourseList(netCourselist);
 //		更新
-		List<Course> updatedCourselist = new ArrayList<Course>();
-		updatedCourselist.addAll(changedCourselist);
-		updatedCourselist.removeAll(addedCourselist);
+		List<Course> updatedCourselist = tssService.compareUpdateCourseList(netCourselist);
+		if(addedCourselist.size()==0&&updatedCourselist.size()==0){
+			return;
+		}
+		if(nowCourselist==null){
+			nowCourselist = new ArrayList<Course>();
+		}
+		if(netCourselist==null){
+			netCourselist = new ArrayList<Course>();
+		}
+		try{
+
 //		针对用户进行个性化通知
 		List<Mailer> mailerlist =  mailDao.getAllMailers();
+		List<Course> nnowCourselist = courseDao.getCourseList();
 		for(Mailer temp:mailerlist){
 			EMail email = null;
 //			全部关注
@@ -60,19 +64,19 @@ public class CronServiceImpl implements CronService{
 			else if(temp.getFollowWay()==1){
 				List<Course> followedCourselist = temp.getFollowedList();
 				List<Course> unfollowedList = new ArrayList<Course>();
-				unfollowedList.addAll(nowCourselist);
-				unfollowedList.removeAll(followedCourselist);
+				unfollowedList.addAll(nnowCourselist);
+				unfollowedList = removeCourseList(unfollowedList,followedCourselist);
 				List<Course> fupdatedCourselist = new ArrayList<Course>();
 				fupdatedCourselist.addAll(updatedCourselist);
-				fupdatedCourselist.removeAll(unfollowedList);
+				fupdatedCourselist = removeCourseList(fupdatedCourselist,unfollowedList);
 				email = packingNotice(addedCourselist,fupdatedCourselist,temp.getAddress());
 			}
 //			黑名单
 			else if(temp.getFollowWay()==2){
 				List<Course> unfollowedCourselist = temp.getFollowedList();
 				List<Course> fupdatedCourselist = new ArrayList<Course>();
-				fupdatedCourselist.addAll(nowCourselist);
-				fupdatedCourselist.removeAll(unfollowedCourselist);
+				fupdatedCourselist.addAll(updatedCourselist);
+				fupdatedCourselist = removeCourseList(fupdatedCourselist,unfollowedCourselist);
 				email = packingNotice(addedCourselist,fupdatedCourselist,temp.getAddress());
 			}
 			else{
@@ -93,7 +97,24 @@ public class CronServiceImpl implements CronService{
 				}
 			}
 		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
+	}
+	
+	private List<Course> removeCourseList(List<Course> big,List<Course> small){
+		List<Course> toremove = new ArrayList<Course>();
+		List<Course> tbig = big;
+		for(Course temp:big){
+			for(Course t:small){
+				if(temp.getCode().equals(t.getCode())){
+					toremove.add(temp);
+				}
+			}
+		}
+		tbig.removeAll(toremove);
+		return tbig;
 	}
 	
 	private EMail packingNotice(List<Course> addedlist, List<Course> updatedlist,String address){

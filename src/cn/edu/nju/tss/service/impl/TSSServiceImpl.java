@@ -1,6 +1,8 @@
 package cn.edu.nju.tss.service.impl;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -66,7 +68,15 @@ public class TSSServiceImpl implements TSSService {
 				course.setLatestUpdateTime(time);
 			}
 			Date date = new Date();
-			long ts = (date.getTime()/100000)*100000;
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			String sdate = sdf.format(date);
+			try {
+				date = sdf.parse(sdate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				
+			}
+			long ts = date.getTime();
 			course.setTime(new Timestamp(ts));
 			courselist.add(course);
 		}
@@ -75,18 +85,36 @@ public class TSSServiceImpl implements TSSService {
 	}
 
 	@Override
-	public List<Course> compareCourseList(List<Course> info) {
+	public List<Course> compareAddCourseList(List<Course> info) {
 		// TODO Auto-generated method stub
 		List<Course> courselist = new ArrayList<Course>();
 		for(Course temp:info){
 			Course cdb = courseDao.getCourseByCode(temp.getCode());
 			if(cdb==null){
-				courselist.add(temp);
 				baseDao.save(temp);
+				courselist.add(temp);
+			}
+			else{
+				//nothing to be done
+			}
+		}
+		return courselist;
+	}
+	
+	@Override
+	public List<Course> compareUpdateCourseList(List<Course> info) {
+		// TODO Auto-generated method stub
+		List<Course> courselist = new ArrayList<Course>();
+		for(Course temp:info){
+			Course cdb = courseDao.getCourseByCode(temp.getCode());
+			if(cdb==null){
 			}
 			else if(!cdb.getLatestUpdateTime().equals(temp.getLatestUpdateTime())){
-				courselist.add(temp);
-				baseDao.update(temp);
+				cdb.setLatestUpdateTime(temp.getLatestUpdateTime());
+				cdb.setName(temp.getName());
+				cdb.setTeacher(temp.getTeacher());
+				baseDao.update(cdb);
+				courselist.add(cdb);
 			}
 			else{
 				//nothing to be done

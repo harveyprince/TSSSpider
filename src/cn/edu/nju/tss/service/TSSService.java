@@ -11,7 +11,12 @@ public interface TSSService {
 	public List<Course> getCourseListFromNet();
 	/**
 	 * @param info 课程列表
-	 * @return 返回发生更新的课程列表
+	 * @return 返回发生更新的新增课程列表
 	 */
-	public List<Course> compareCourseList(List<Course> info);
+	public List<Course> compareAddCourseList(List<Course> info);
+	/**
+	 * @param info 课程列表
+	 * @return 返回发生更新的已有课程列表
+	 */
+	public List<Course> compareUpdateCourseList(List<Course> info);
 }
