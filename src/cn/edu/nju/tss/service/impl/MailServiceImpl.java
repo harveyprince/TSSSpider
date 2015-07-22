@@ -44,4 +44,10 @@ public class MailServiceImpl implements MailService {
 		return emailList;
 	}
 
+	@Override
+	public Mailer getMailerByEmail(String email) {
+		// TODO Auto-generated method stub
+		return mailDao.getMailerByEmail(email);
+	}
+
 }

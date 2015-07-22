@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 <head>
@@ -35,24 +36,12 @@
 						      <input type="text" class="form-control search" placeholder="按课程名、教师名、课程号检索">
 						</div><!-- /input-group -->
 						<table class="table table-striped">
-							<tr class="active">
-								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
-								<td>课程名</td>
-								<td>老师名</td>
-								<td><i class="fa fa-plus-square follow"></i></td>
-							</tr>
-							<tr class="active">
-								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
-								<td>课程名</td>
-								<td>老师名</td>
-								<td><i class="fa fa-plus-square follow"></i></td>
-							</tr>
 						</table>
 						<footer>
 							<nav>
 							  <ul class="pager">
-							    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
-							    <li class="next"><a href="#">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+							    <li class="previous"><a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+							    <li class="next"><a href="javascript:void(0)">下一页 <span aria-hidden="true">&rarr;</span></a></li>
 							  </ul>
 							</nav>
 						</footer>
@@ -60,24 +49,12 @@
 					<div class="panel-block follow-panel col-md-4">
 						<header>订阅列表</header>
 						<table class="table table-striped">
-							<tr class="active">
-								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
-								<td>课程名</td>
-								<td>老师名</td>
-								<td><i class="fa fa-minus-square unfollow"></i></td>
-							</tr>
-							<tr class="active">
-								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
-								<td>课程名</td>
-								<td>老师名</td>
-								<td><i class="fa fa-minus-square unfollow"></i></td>
-							</tr>
 						</table>
 						<footer>
 							<nav>
 							  <ul class="pager">
-							    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
-							    <li class="next"><a href="#">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+							    <li class="previous"><a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+							    <li class="next"><a href="javascript:void(0)">下一页 <span aria-hidden="true">&rarr;</span></a></li>
 							  </ul>
 							</nav>
 						</footer>
@@ -85,21 +62,21 @@
 					<div class="panel-block followWay-panel col-md-4">
 						<header>订阅方式</header>
 						<table class="table table-striped">
-							<tr class="success">
+							<tr class="active" value="0">
 								<td>全部关注</td>
 								<td><i class="fa fa-check"></i></td>
 							</tr>
-							<tr class="active">
+							<tr class="active" value="1">
 								<td>白名单</td>
-								<td></td>
+								<td><i class="fa fa-check"></i></td>
 							</tr>
-							<tr class="active">
+							<tr class="active" value="2">
 								<td>黑名单</td>
-								<td></td>
+								<td><i class="fa fa-check"></i></td>
 							</tr>
-							<tr class="active">
+							<tr class="active" value="3">
 								<td>取消通知</td>
-								<td></td>
+								<td><i class="fa fa-check"></i></td>
 							</tr>
 						</table>
 					</div>
@@ -121,7 +98,8 @@
 	    extraClasses: 'messenger-fixed messenger-on-top',
 	    theme: 'air'
 	}
-	Messenger().post("Your request has succeded!");
+	$(".followWay-panel tr[value='<s:property value="followWay" />']").removeClass("active");
+	$(".followWay-panel tr[value='<s:property value="followWay" />']").addClass("success");
 </script>
 <script src="./Source/Public/js/user/follow.js"></script>
 </html>

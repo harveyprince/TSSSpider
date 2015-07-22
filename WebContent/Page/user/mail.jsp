@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 <head>
@@ -26,26 +27,6 @@
 					<div><i class="fa fa-chevron-left"></i>邮件列表查看<i class="fa fa-chevron-right"></i></div>
 				</header>
 				<div class="main-panel">
-					<div class="mail-block">
-						<h4>邮件头</h4>
-						<div class="mail-content">邮件内容</div>
-					</div>
-					<div class="mail-block">
-						<h4>邮件头</h4>
-						<div class="mail-content">邮件内容</div>
-					</div>
-					<div class="mail-block">
-						<h4>邮件头</h4>
-						<div class="mail-content">邮件内容</div>
-					</div>
-					<div class="mail-block">
-						<h4>邮件头</h4>
-						<div class="mail-content">邮件内容</div>
-					</div>
-					<div class="mail-block">
-						<h4>邮件头</h4>
-						<div class="mail-content">邮件内容</div>
-					</div>
 				</div>
 			</div>
 		</div><!-- /content-wrap -->
@@ -64,6 +45,7 @@
 	    extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
 	    theme: 'air'
 	}
-	Messenger().post("Your request has succeded!");
+	// Messenger().post("Your request has succeded!");
 </script>
+<script src="./Source/Public/js/user/mail.js"></script>
 </html>

@@ -3,6 +3,7 @@ package cn.edu.nju.tss.service;
 import java.util.List;
 
 import cn.edu.nju.tss.model.EMailDB;
+import cn.edu.nju.tss.model.Mailer;
 import cn.edu.nju.tss.model.vo.EMail;
 
 public interface MailService {
@@ -24,4 +25,10 @@ public interface MailService {
 	 * @return 获取已发送的邮件列表
 	 */
 	public List<EMailDB> getMailListByPage(String address, int page);
+	
+	/**
+	 * @param email 用户识别
+	 * @return 返回用户
+	 */
+	public Mailer getMailerByEmail(String email);
 }

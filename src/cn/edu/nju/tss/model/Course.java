@@ -2,7 +2,10 @@ package cn.edu.nju.tss.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,9 +13,15 @@ import javax.persistence.Table;
 @Table(name="Course")
 public class Course {
 	/**
-	 * 课程码
+	 * 流水号
 	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	/**
+	 * 课程码
+	 */
+	@Column(unique = true)
 	private String code;
 	/**
 	 * 课程名
@@ -30,6 +39,12 @@ public class Course {
 	 * 系统捕获时的更新时间
 	 */
 	private Timestamp time;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getCode() {
 		return code;
 	}

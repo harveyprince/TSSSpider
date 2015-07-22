@@ -14,4 +14,9 @@ public interface CourseDao {
 
 	public List<Course> getUnfollowedCourseByPage(String address, int page);
 
+	public List<Course> getFollowedCourseListByPage(String email, int page);
+
+	public List<Course> getUnfollowedCourseByPageAndKey(String address,
+			int page, String key);
+
 }

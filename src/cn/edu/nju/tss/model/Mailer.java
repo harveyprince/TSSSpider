@@ -38,7 +38,7 @@ public class Mailer {
 	 * 所联系的课程
 	 */
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
-	@JoinTable(name = "FollowCourse", joinColumns = { @JoinColumn(name ="address" )}, inverseJoinColumns = { @JoinColumn(name = "code") })
+	@JoinTable(name = "FollowCourse", joinColumns = { @JoinColumn(name ="address" )}, inverseJoinColumns = { @JoinColumn(name = "courseid") })
 	private List<Course> followedList;
 
 	public String getAddress() {

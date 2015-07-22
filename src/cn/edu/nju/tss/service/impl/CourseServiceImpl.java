@@ -24,5 +24,12 @@ public class CourseServiceImpl implements CourseService {
 		List<Course> list = courseDao.getUnfollowedCourseByPage(address, page);
 		return list;
 	}
+	@Override
+	public List<Course> getUnfollowedCourseListByPageAndKey(String address,
+			int page, String key) {
+		// TODO Auto-generated method stub
+		List<Course> list = courseDao.getUnfollowedCourseByPageAndKey(address, page, key);
+		return list;
+	}
 
 }

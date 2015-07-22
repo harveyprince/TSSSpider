@@ -40,7 +40,7 @@ public class MailDaoImpl implements MailDao {
 		// TODO Auto-generated method stub
 		Session session = baseDao.getNewSession();
 		try{
-			String sql = "select * from EMailDB where address='?' order by time desc limit ?,?";
+			String sql = "select * from EMailDB where address=? order by time desc limit ?,?";
 			Query query = session.createSQLQuery(sql).addEntity(EMailDB.class);
 			query.setString(0, address);
 			query.setInteger(1, page*PageConfig.EMAIL_PAGE);
@@ -66,7 +66,7 @@ public class MailDaoImpl implements MailDao {
 		// TODO Auto-generated method stub
 		Session session = baseDao.getNewSession();
 		try{
-			String sql = "select * from Mailer where address='?'";
+			String sql = "select * from Mailer where address=?";
 			Query query = session.createSQLQuery(sql).addEntity(Mailer.class);
 			query.setString(0, email);
 			@SuppressWarnings("unchecked")

@@ -2,6 +2,7 @@ package cn.edu.nju.tss.service.impl;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -65,9 +66,11 @@ public class TSSServiceImpl implements TSSService {
 				course.setLatestUpdateTime(time);
 			}
 			Date date = new Date();
-			course.setTime(new Timestamp(date.getTime()));
+			long ts = (date.getTime()/100000)*100000;
+			course.setTime(new Timestamp(ts));
 			courselist.add(course);
 		}
+		Collections.reverse(courselist);
 		return courselist;
 	}
 

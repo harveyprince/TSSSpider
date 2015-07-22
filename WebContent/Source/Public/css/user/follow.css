@@ -53,3 +53,9 @@ table .fa{
 .followWay-panel tr.active:hover td{
 	background: #31708F;
 }
+.followWay-panel tr i{
+	display: none;
+}
+.followWay-panel tr.success i{
+	display: block;
+}

@@ -13,6 +13,9 @@
           <action name="" class="AuthenticateAction" method="welcome">
           	<result name="success">/Page/welcome/welcome.jsp</result>
           </action>
+          <action name="welcome" class="AuthenticateAction" method="welcome">
+          	<result name="success">/Page/welcome/welcome.jsp</result>
+          </action>
           <!-- 关注页 -->
           <action name="follow" class="TSSAction" method="follow">
           	<result name="success">/Page/user/follow.jsp</result>
@@ -25,6 +28,10 @@
           <action name="activate" class="AuthenticateAction" method="activate">
           	<result name="success">/Page/welcome/activate.jsp</result>
           </action>
+          <!-- 注销 -->
+          <action name="signout" class="AuthenticateAction" method="signout">
+          	<result name="success">/Page/welcome/welcome.jsp</result>
+          </action>
       </package>
       <!-- ajax数据 -->
       <package name="json" namespace="/JSON" extends="struts-default, json-default">
@@ -34,6 +41,36 @@
 				</result>
 			</action>
 			<action name="signup" class="AuthenticateAction" method="signup">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="course" class="TSSAction" method="course">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="followlist" class="TSSAction" method="followlist">
+				<result type="json">
+					<param name="root">fjsonResult</param>
+				</result>
+			</action>
+			<action name="followCourse" class="TSSAction" method="followCourse">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="unfollowCourse" class="TSSAction" method="unfollowCourse">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="changeway" class="TSSAction" method="changeway">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="maillist" class="TSSAction" method="maillist">
 				<result type="json">
 					<param name="root">jsonResult</param>
 				</result>

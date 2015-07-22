@@ -140,6 +140,8 @@ body,
 .icon-list a {
 	display: block;
 	padding: 0.8em;
+	text-decoration: none;
+	font-size: 20px;
 }
 
 .icon-list a i {

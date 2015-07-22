@@ -55,6 +55,7 @@ $(document).ready(function(){
 						var json = data;
 						if(json.code==1){
 							$box.alarm("请查收激活邮件");
+							$box.alarm("30分钟内有效");
 						}else{
 							$box.alarm(json.comment);
 						}

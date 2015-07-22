@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<style type="text/css">
+	.name{
+		padding-left: 20px;
+  		font-size: 20px;
+  		padding-bottom: 20px;
+	}
+	.name span{
+		font-size: 15px;
+  		padding-right: 10px;
+	}
+</style>
 <div class="menu-wrap">
 	<nav class="menu">
+		<div class="name"><span>欢迎</span><s:property value="name" /></div>
 		<div class="icon-list">
-			<a href="#"><i class="fa fa-fw fa-star-o"></i><span>订阅设置</span></a>
-			<a href="#"><i class="fa fa-fw fa-bell-o"></i><span>通知查询</span></a>
+			<a href="follow"><i class="fa fa-fw fa-star-o"></i><span>订阅设置</span></a>
+			<a href="mail"><i class="fa fa-fw fa-bell-o"></i><span>邮件查询</span></a>
+			<a href="signout"><i class="fa fa-sign-out"></i><span>退出</span></a>
 		</div>
 	</nav>
 	<button class="close-button" id="close-button">Close Menu</button>

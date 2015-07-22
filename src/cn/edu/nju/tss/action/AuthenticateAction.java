@@ -33,7 +33,12 @@ public class AuthenticateAction extends BaseAction {
 	public String welcome(){
 		return SUCCESS;
 	}
-	
+	public String signout(){
+		if(session.containsKey("account")){
+			session.remove("account");
+		}
+		return SUCCESS;
+	}
 	public String activate(){
 		String code = request.getParameter("code");
 		if(code==null){
@@ -95,16 +100,15 @@ public class AuthenticateAction extends BaseAction {
 					String activateCode = (String) rm.getObj();
 					EMail activateEmail = new EMail();
 					activateEmail.setTitle("TSSSpider激活邮件");
-					String content = "请访问以下地址激活账户\n";
+					String content = "请在30分钟内访问以下地址激活账户\n";
 					String path = request.getContextPath();
 					String basePath = request.getScheme() + "://"
 							+ request.getServerName() + ":" + request.getServerPort()
 							+ path + "/";
 					content += basePath+"activate?code="+activateCode;
-					System.out.println(content);
 					activateEmail.setContent(content);
 					activateEmail.setReceiver(email);
-	//				mailService.mailTo(activateEmail);
+//					mailService.mailTo(activateEmail);
 					jsonResult.put("code", 1);
 				}else{
 					jsonResult.put("code", -1);

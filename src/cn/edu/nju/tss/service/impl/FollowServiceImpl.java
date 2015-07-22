@@ -112,4 +112,10 @@ public class FollowServiceImpl implements FollowService {
 		return rm;
 	}
 
+	@Override
+	public List<Course> getFollowedListByPage(String email, int page) {
+		// TODO Auto-generated method stub
+		return courseDao.getFollowedCourseListByPage(email, page);
+	}
+
 }

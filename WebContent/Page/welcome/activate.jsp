@@ -45,12 +45,15 @@
 <script src="./Source/Public/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	for(var i = 5; i>=1; i--){
-		setTimeout(function(){
-			$(".mail-content span").text(i);
-		},1000);
-	}
-	window.location.href="";
+	var i = 5;
+	var inter = setInterval(function(){
+		$(".mail-content span").text(i);
+		if(i==0){
+			clearInterval(inter);
+			window.location.href="welcome";
+		}
+		i--;
+	},1000);
 });
 </script>
 </html>
