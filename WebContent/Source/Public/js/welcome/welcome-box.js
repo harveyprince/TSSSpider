@@ -2,10 +2,10 @@ $(document).ready(function(){
 	$(".form-box").FormBoxInit({
 			loginAble:true,
 			loginBox:['email','password'],
-			loginAction:"http://www.baidu.com",
+			loginAction:"JSON/signin",
 			signupAble:true,
 			signupBox:['name','email','password'],
-			signupAction:"http://www.baidu.com",
+			signupAction:"JSON/signup",
 
 			//functions
 			onformsubmit:null,
@@ -24,7 +24,12 @@ $(document).ready(function(){
 					contentType: false,
 					processData: false,
 					success: function(data) {
-						//callback code
+						var json = data;
+						if(json.code==1){
+							window.location.href = "follow";
+						}else{
+							$box.alarm(json.comment);
+						}
 					},
 					error:function(){
 						$box.alarm("请求发生异常");
@@ -47,7 +52,12 @@ $(document).ready(function(){
 					contentType: false,
 					processData: false,
 					success: function(data) {
-						//callback code
+						var json = data;
+						if(json.code==1){
+							$box.alarm("请查收激活邮件");
+						}else{
+							$box.alarm(json.comment);
+						}
 					},
 					error:function(){
 						$box.alarm("请求发生异常");

@@ -15,7 +15,7 @@ public class BaseAction extends ActionSupport implements SessionAware,
         ServletRequestAware, ServletResponseAware {  
   
     private static final long serialVersionUID = 1L;  
-    
+    public static final String UNAUDITED = "unAudited";
     
  
     public HttpServletRequest   request;  

@@ -16,5 +16,12 @@ public class TSSAction extends BaseAction {
 	@Autowired
 	private TSSService tssService;
 	
+	public String follow(){
+		return SUCCESS;
+	}
+	
+	public String mail(){
+		return SUCCESS;
+	}
 	
 }

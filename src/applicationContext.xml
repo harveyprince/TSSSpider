@@ -44,7 +44,7 @@
 	<!-- redis -->
 	<bean id="jedisConnFactory" 
     class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
-    p:use-pool="true"/>
+    p:password="harveyprince" p:use-pool="true"/>
 	<bean id="redisTemplate" 
     class="org.springframework.data.redis.core.StringRedisTemplate" 
     p:connection-factory-ref="jedisConnFactory"/>

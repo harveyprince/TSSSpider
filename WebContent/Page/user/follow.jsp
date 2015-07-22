@@ -6,7 +6,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>课程订阅设置</title>
+	<title>TSSSpider-课程订阅设置</title>
 	<link rel="stylesheet" type="text/css" href="./Source/Public/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./Source/Public/drawer/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="./Source/Public/drawer/css/demo.css" />
@@ -39,14 +39,12 @@
 								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
 								<td>课程名</td>
 								<td>老师名</td>
-								<td>更新时间</td>
 								<td><i class="fa fa-plus-square follow"></i></td>
 							</tr>
 							<tr class="active">
 								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
 								<td>课程名</td>
 								<td>老师名</td>
-								<td>更新时间</td>
 								<td><i class="fa fa-plus-square follow"></i></td>
 							</tr>
 						</table>
@@ -66,14 +64,12 @@
 								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
 								<td>课程名</td>
 								<td>老师名</td>
-								<td>更新时间</td>
 								<td><i class="fa fa-minus-square unfollow"></i></td>
 							</tr>
 							<tr class="active">
 								<td><a href="http://218.94.159.102/tss/en/c0968/index.html">c0968</a></td>
 								<td>课程名</td>
 								<td>老师名</td>
-								<td>更新时间</td>
 								<td><i class="fa fa-minus-square unfollow"></i></td>
 							</tr>
 						</table>
@@ -117,6 +113,9 @@
 <script src="./Source/Public/backbone-1.2.1/underscore.js"></script>
 <script src="./Source/Public/backbone-1.2.1/backbone-min.js"></script>
 <script src="./Source/Public/hubspot/js/messenger.min.js"></script>
+<script src="./Source/Public/drawer/js/snap.svg-min.js"></script>
+<script src="./Source/Public/drawer/js/classie.js"></script>
+<script src="./Source/Public/drawer/js/main3.js"></script>
 <script type="text/javascript">
 	Messenger.options = {
 	    extraClasses: 'messenger-fixed messenger-on-top',
@@ -124,4 +123,5 @@
 	}
 	Messenger().post("Your request has succeded!");
 </script>
+<script src="./Source/Public/js/user/follow.js"></script>
 </html>

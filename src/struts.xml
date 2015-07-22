@@ -3,20 +3,41 @@
       "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
       "http://struts.apache.org/dtds/struts-2.0.dtd">
   <struts>
-
-      <package name="struts2" namespace=""
+	<!-- 网页页面 -->
+      <package name="webpage" namespace=""
           extends="struts-default">
+          	<global-results>
+			<result name="unAudited" type="redirect">/</result>
+			</global-results>
+          <!-- 首页 -->
           <action name="" class="AuthenticateAction" method="welcome">
           	<result name="success">/Page/welcome/welcome.jsp</result>
           </action>
-          <action name="follow" class="AuthenticateAction" method="welcome">
+          <!-- 关注页 -->
+          <action name="follow" class="TSSAction" method="follow">
           	<result name="success">/Page/user/follow.jsp</result>
           </action>
-          <action name="mail" class="AuthenticateAction" method="welcome">
+          <!-- 邮件页 -->
+          <action name="mail" class="TSSAction" method="mail">
           	<result name="success">/Page/user/mail.jsp</result>
           </action>
-          <action name="activate" class="AuthenticateAction" method="welcome">
+          <!-- 激活页 -->
+          <action name="activate" class="AuthenticateAction" method="activate">
           	<result name="success">/Page/welcome/activate.jsp</result>
           </action>
       </package>
+      <!-- ajax数据 -->
+      <package name="json" namespace="/JSON" extends="struts-default, json-default">
+	      <action name="signin" class="AuthenticateAction" method="signin">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+			<action name="signup" class="AuthenticateAction" method="signup">
+				<result type="json">
+					<param name="root">jsonResult</param>
+				</result>
+			</action>
+      </package>
+      
   </struts>

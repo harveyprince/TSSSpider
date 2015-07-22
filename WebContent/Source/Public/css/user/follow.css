@@ -30,7 +30,7 @@ table {
 	color: rgb(0,0,0);
 }
 table .fa{
-	padding-top: 4px;
+	padding-top: 2px;
 }
 .follow,.unfollow {
 	cursor: pointer;

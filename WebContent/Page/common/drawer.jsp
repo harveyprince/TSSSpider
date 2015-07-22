@@ -15,6 +15,3 @@ pageEncoding="UTF-8"%>
 	</div>
 </div>
 <button class="menu-button" id="open-button">Open Menu</button>
-<script src="../../Source/Public/drawer/js/snap.svg-min.js"></script>
-<script src="../../Source/Public/drawer/js/classie.js"></script>
-<script src="../../Source/Public/drawer/js/main3.js"></script>

@@ -59,6 +59,7 @@ public class AccountServiceImpl implements AccountService {
 //			激活码
 			String activateCodeSource = Shuffle.shuffle("qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM");
 			String activateCode = activateCodeSource.substring(0, 20);
+			System.out.println(activateCode);
 //			在redis中采用超时过期的方法保存注册信息
 			try{
 				valueOps.append(RedisDecorate.activateDec(activateCode), vo.getEmail());
@@ -70,6 +71,7 @@ public class AccountServiceImpl implements AccountService {
 //				返回携带激活码的结果，用于邮件发送激活码
 				rm.setResult(true);
 				rm.setObj(activateCode);
+				System.out.println("obj"+(String)rm.getObj());
 			}catch(Exception e){
 				e.printStackTrace();
 				rm.setResult(false);
@@ -87,6 +89,12 @@ public class AccountServiceImpl implements AccountService {
 		try{
 			String email = valueOps.get(RedisDecorate.activateDec(activateCode));
 			if(email!=null){
+				ResultMessage rm_else = emailFind(email);
+				if(rm_else.isResult()){
+					rm.setResult(false);
+					rm.setComment("账户已存在");
+					return rm;
+				}
 				String name = valueOps.get(RedisDecorate.nameDec(email));
 				String password = valueOps.get(RedisDecorate.passDec(email));
 //				{进行实际的注册

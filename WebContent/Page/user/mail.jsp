@@ -6,7 +6,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>邮件列表</title>
+	<title>TSSSpider-邮件列表</title>
 	<link rel="stylesheet" type="text/css" href="./Source/Public/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./Source/Public/drawer/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="./Source/Public/drawer/css/demo.css" />
@@ -56,6 +56,9 @@
 <script src="./Source/Public/backbone-1.2.1/underscore.js"></script>
 <script src="./Source/Public/backbone-1.2.1/backbone-min.js"></script>
 <script src="./Source/Public/hubspot/js/messenger.min.js"></script>
+<script src="./Source/Public/drawer/js/snap.svg-min.js"></script>
+<script src="./Source/Public/drawer/js/classie.js"></script>
+<script src="./Source/Public/drawer/js/main3.js"></script>
 <script type="text/javascript">
 	Messenger.options = {
 	    extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
