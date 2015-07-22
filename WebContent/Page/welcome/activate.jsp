@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 <head>
@@ -25,8 +26,15 @@
 				</header>
 				<div class="main-panel">
 					<div class="mail-block">
-						<h4>激活成功</h4>
-						<div class="mail-content">等待<span>5</span>秒后跳转到首页</div>
+						<s:if test="%{pageResult.result}">
+							<h4>激活成功</h4>
+							<div class="mail-content">等待<span>5</span>秒后跳转到首页</div>
+						</s:if>
+						<s:else>
+							<h4>激活失败</h4>
+							<div><s:property value="pageResult.comment" /></div>
+							<div class="mail-content">等待<span>5</span>秒后跳转到首页</div>
+						</s:else>
 					</div>
 				</div>
 			</div>
@@ -35,4 +43,14 @@
 
 </body>
 <script src="./Source/Public/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	for(var i = 5; i>=1; i--){
+		setTimeout(function(){
+			$(".mail-content span").text(i);
+		},1000);
+	}
+	window.location.href="";
+});
+</script>
 </html>
