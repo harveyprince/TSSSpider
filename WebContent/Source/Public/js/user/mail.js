@@ -3,7 +3,7 @@ function getMail(page){
 	var data = new FormData();
 	data.append("page",page);
 	$.ajax({
-		data: fdata,
+		data: data,
 		type: "POST",
 		url: "JSON/maillist",
 		cache: false,
