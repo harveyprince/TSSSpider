@@ -108,7 +108,7 @@ public class AuthenticateAction extends BaseAction {
 					content += basePath+"activate?code="+activateCode;
 					activateEmail.setContent(content);
 					activateEmail.setReceiver(email);
-//					mailService.mailTo(activateEmail);
+					mailService.mailTo(activateEmail);
 					jsonResult.put("code", 1);
 				}else{
 					jsonResult.put("code", -1);
