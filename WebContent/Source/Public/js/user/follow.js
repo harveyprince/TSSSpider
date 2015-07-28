@@ -132,7 +132,11 @@ function getFollow(page){
 					});
 				});
 			}else{
-				Messenger().post(json.comment);
+				if(page==0){
+					$(".follow-panel table").html("");
+				}else{
+					Messenger().post(json.comment);
+				}
 			}
 		},
 		error:function(){

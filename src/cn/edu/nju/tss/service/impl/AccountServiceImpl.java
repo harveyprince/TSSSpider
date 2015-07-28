@@ -61,6 +61,7 @@ public class AccountServiceImpl implements AccountService {
 			if(name!=null){
 				rm.setResult(false);
 				rm.setComment("已发送注册邮件，30分钟后可重新注册");
+				return rm;
 			}
 //			激活码
 			String activateCodeSource = Shuffle.shuffle("qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM");
