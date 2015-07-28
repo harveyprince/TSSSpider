@@ -93,6 +93,11 @@ public class TSSAction extends BaseAction {
 			}else{
 				courselist = courseService.getUnfollowedCourseListByPageAndKey(account.getEmail(), page, key);
 			}
+			if(courselist==null){
+				jsonResult.put("code", -1);
+				jsonResult.put("comment", "无该页数据");
+				return SUCCESS;
+			}
 			jsonResult.put("code", 1);
 			jsonResult.put("course", courselist);
 		}catch(Exception e){
@@ -114,6 +119,11 @@ public class TSSAction extends BaseAction {
 				page = 0;
 			}
 			List<Course> courselist = followService.getFollowedListByPage(account.getEmail(), page);
+			if(courselist==null){
+				jsonResult.put("code", -1);
+				jsonResult.put("comment", "无该页数据");
+				return SUCCESS;
+			}
 			fjsonResult.put("code", 1);
 			fjsonResult.put("course", courselist);
 		}catch(Exception e){

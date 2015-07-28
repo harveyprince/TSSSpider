@@ -56,6 +56,12 @@ public class AccountServiceImpl implements AccountService {
 			rm.setResult(false);
 			rm.setComment("该邮箱已被占用");
 		}else{
+//			判断redis是否已存在避免恶意注册
+			String name = valueOps.get(RedisDecorate.nameDec(vo.getEmail()));
+			if(name!=null){
+				rm.setResult(false);
+				rm.setComment("已发送注册邮件，30分钟后可重新注册");
+			}
 //			激活码
 			String activateCodeSource = Shuffle.shuffle("qwertyuiopasdfghjklzxcvbnm_QWERTYUIOPASDFGHJKLZXCVBNM");
 			String activateCode = activateCodeSource.substring(0, 20);
