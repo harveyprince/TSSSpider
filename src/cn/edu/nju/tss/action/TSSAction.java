@@ -120,8 +120,8 @@ public class TSSAction extends BaseAction {
 			}
 			List<Course> courselist = followService.getFollowedListByPage(account.getEmail(), page);
 			if(courselist==null){
-				jsonResult.put("code", -1);
-				jsonResult.put("comment", "无该页数据");
+				fjsonResult.put("code", -1);
+				fjsonResult.put("comment", "无该页数据");
 				return SUCCESS;
 			}
 			fjsonResult.put("code", 1);
