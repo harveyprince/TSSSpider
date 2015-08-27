@@ -1,2 +1,6 @@
 /applicationMail.xml
+/.gitignore
+/README.md
+/applicationContext.xml
 /cn/
+/struts.xml

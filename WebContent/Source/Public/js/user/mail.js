@@ -14,9 +14,9 @@ function getMail(page){
 			if(json.code==1){
 				mailpage = page;
 				var list = json.mail;
+				$(".main-panel").html("");
 				for(var idx in list){
 					var ma = list[idx];
-					$(".main-panel").html("");
 					$(".main-panel").append(
 						$('<div class="mail-block">').append(
 							$("<h4>").text(ma.time+">"+ma.title)
